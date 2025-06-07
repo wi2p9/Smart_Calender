@@ -1,2 +1,2 @@
 # Smart_Calender
-To send a remainder through Email related to the Events Scheduled
+A Flask-based event reminder app that allows users to set events with name, venue, and reminders, sending email notifications and displaying them on a visually stunning frontend.
