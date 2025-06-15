@@ -1,0 +1,167 @@
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, #1e3a8a, #6b21a8);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+}
+
+/* Container with Glassmorphism */
+.container {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 2.5rem;
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 600px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  animation: fadeIn 1s ease-in-out;
+}
+
+/* Heading with Neon Glow */
+h2 {
+  color: #ffffff;
+  text-align: center;
+  font-size: 2.2rem;
+  font-weight: 700;
+  text-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+  margin-bottom: 1.5rem;
+}
+
+/* Form Styling */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+label {
+  color: #e0e7ff;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 0.3rem;
+}
+
+input {
+  width: 100%;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+input:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 0 15px rgba(59, 130, 246, 0.4);
+}
+
+input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* Button with Hover Effect */
+button {
+  padding: 0.8rem;
+  background: linear-gradient(45deg, #3b82f6, #8b5cf6);
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+button:hover {
+  background: linear-gradient(45deg, #2563eb, #7c3aed);
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.6);
+  transform: translateY(-2px);
+}
+
+button::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.4s ease, height 0.4s ease;
+}
+
+button:active::after {
+  width: 200px;
+  height: 200px;
+}
+
+/* Message Styling */
+.message {
+  color: #34d399;
+  text-align: center;
+  font-weight: 500;
+  margin-top: 1rem;
+  animation: slideIn 0.5s ease-in-out;
+}
+
+/* Reminder Styling with Calendar Card Effect */
+.reminder {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 1rem;
+  border-radius: 12px;
+  margin-top: 1rem;
+  border-left: 4px solid #f59e0b;
+  color: #e0e7ff;
+  font-size: 0.95rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  animation: slideIn 0.5s ease-in-out;
+}
+
+.reminder strong {
+  color: #ffffff;
+  font-size: 1.1rem;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .container {
+    padding: 1.5rem;
+    margin: 1rem;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+  }
+
+  input, button {
+    font-size : 0.9rem;
+  }
+}

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smart Calendar - Event Reminder</title>
+  <link rel="stylesheet" href="/static/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div class="container">
+    <h2>Smart Calendar Reminder</h2>
+    <form action="/set_reminder" method="POST">
+      <div>
+        <label for="name">Your Name</label>
+        <input type="text" id="name" name="name" placeholder="Enter your name" required>
+      </div>
+
+      <div>
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+      </div>
+
+      <div>
+        <label for="event_name">Event Name</label>
+        <input type="text" id="event_name" name="event_name" placeholder="E.g., Team Meeting" required>
+      </div>
+
+      <div>
+        <label for="event_date">Event Date</label>
+        <input type="date" id="event_date" name="event_date" required>
+      </div>
+
+      <div>
+        <label for="event_time">Event Time</label>
+        <input type="time" id="event_time" name="event_time" required>
+      </div>
+
+      <div>
+        <label for="venue">Venue</label>
+        <input type="text" id="venue" name="venue" placeholder="E.g., Conference Room A" required>
+      </div>
+
+      <div>
+        <label for="description">Event Description</label>
+        <input type="text" id="description" name="description" placeholder="Brief event details" required>
+      </div>
+
+      <div>
+        <label for="reminder_minutes">Reminder (minutes before)</label>
+        <input type="number" id="reminder_minutes" name="reminder_minutes" min="1" placeholder="E.g., 30" required>
+      </div>
+
+      <button type="submit">Set Smart Reminder</button>
+    </form>
+
+    {% if message %}
+      <p class="message">{{ message }}</p>
+    {% endif %}
+
+    <div id="reminder-msg"></div>
+
+    <script>
+      setInterval(() => {
+        fetch('/get_reminder')
+          .then(res => res.json())
+          .then(data => {
+            const div = document.getElementById('reminder-msg');
+            div.innerHTML = '';
+            if (data.length > 0) {
+              data.forEach(event => {
+                div.innerHTML += `
+                  <div class="reminder">
+                    <strong>${event.event_name}</strong><br/>
+                    👤 ${event.name}<br/>
+                    🕒 ${event.event_datetime}<br/>
+                    📍 ${event.venue}<br/>
+                    📝 ${event.description}<br/>
+                    🔔 Reminder: ${event.reminder_time}<br/>
+                  </div>
+                `;
+              });
+            }
+          });
+      }, 5000);
+    </script>
+  </div>
+</body>
+</html>
