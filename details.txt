@@ -2,15 +2,15 @@
 
 2. >code .env
 and store 
-EMAIL_ADDRESS=naveensrinis@gmail.com
-EMAIL_PASSWORD=ymzkkkmroatpukjj
+EMAIL_ADDRESS=*****************
+EMAIL_PASSWORD=****************
 
 3. To get EMAIL_PASSWORD 
 https://myaccount.google.com/
 Navigate to Security > 2-Step Verification. If 2FA is enabled 
 Search App passwords
 Type App Name app name :- Flask Reminder and click enter, u will get
-app password :- ymzk kkmr oatp ukjj
+app password :- **** **** **** ****
 
 4. > Get-Content .env
 5. > Add-Content -Path .gitignore -Value ".env"
